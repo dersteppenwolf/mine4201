@@ -1,0 +1,51 @@
+<div class="placeCard">
+    <div class="card  text-black  mb-2 ">
+        <h4>{{ctrl.title}}</h4>
+        <span ng-if="ctrl.items.length == 0">No items available.</span>
+    </div>
+    <!--Card-->
+    <div class="card  text-black  mb-1" ng-repeat="(key,value) in ctrl.items">
+        <div class="card-block">
+            <!--Text-->
+            <p class="card-text"><small ng-show="value.name">{{value.name}}</small></p>
+            <p class="card-text"><small class="text-muted" ng-show="!value.rank_adjusted">Rank: {{value.rank}} </small>
+                <small class="text-muted" ng-show="value.rank_adjusted"> Rank: {{value.rank_adjusted}} (Change: {{value.rank_change}})
+              </small></p>
+            <p class="card-text"><small class="text-muted">Score: {{value.score}}</small><small class="text-muted" ng-show="value.score_adjusted"> (Adjusted: {{value.score_adjusted}})</small></p>
+            <p class="card-text"><small class="text-muted" ng-show="value.stars">Stars: {{value.stars}}</small></p>
+
+            <p class="card-text"><small class="text-muted" ng-show="value.distance">Distance: {{value.distance| number:2}} km</small></p>
+
+            <p class="card-text">
+                <small class="text-muted" ng-show="value.highlight.name">
+                  Related to Business Name:
+                  <div class="highlight-text " ng-bind-html="value.highlight.name[0] | unsafe"></div>
+                </small>
+            </p>
+
+            <p class="card-text">
+                <small class="text-muted" ng-show="value.highlight.categories">
+                  Related to Category:
+                  <div class="highlight-text " ng-bind-html="value.highlight.categories | unsafe"></div>
+                </small>
+            </p>
+
+            <p class="card-text">
+                <small class="text-muted" ng-show="value.highlight.tips">
+                  Related to tips:
+                  <div class="highlight-text text-muted " ng-bind-html="value.highlight.tips | unsafe"></div>
+                </small>
+            </p>
+
+            <p class="card-text">
+                <small class="text-muted" ng-show="value.highlight.reviews">
+                  Related to Reviews:
+                  <div class="highlight-text text-muted " ng-bind-html="value.highlight.reviews | unsafe"></div>
+                </small>
+            </p>
+
+
+        </div>
+    </div>
+    <!--/.Card-->
+</div>

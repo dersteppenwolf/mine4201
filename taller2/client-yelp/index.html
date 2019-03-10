@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- define angular app -->
+<html ng-app="scotchApp">
+
+<head>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css" />
+    <link href="css/style.css?v=2" rel="stylesheet">
+    <link href="css/angular-input-stars.css?v=2" rel="stylesheet"/>
+
+    <!-- SPELLS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-2.5.0.min.js"></script>
+    <script src="js/Chart.min.js?v=2"></script>
+    <script src="js/angular-chart.min.js?v=2"></script>
+    <script src="js/angular-input-stars.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+    <script src="js/artistCardController.js?v=2"></script>
+    <script src="js/adminController.js?v=2"></script>
+    <script src="js/recommendationsController.js?v=2"></script>
+    <script src="js/userProfileController.js?v=2"></script>
+    <script src="js/mainController.js?v=4"></script>
+    <script src="js/homeController.js?v=4"></script>
+    <script src="js/navController.js?v=4"></script>
+    <script src="js/directives.js?v=4"></script>
+    <script src="js/filters.js?v=4"></script>
+
+
+
+	<link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
+	<script type="text/javascript" src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-leaflet-directive/0.10.0/angular-leaflet-directive.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+
+
+</head>
+
+<!-- define angular controller -->
+
+<body ng-controller="mainController">
+
+    <div ng-controller="navController">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
+            <div class="navbar-header">
+                <p class="navbar-brand">Business Recommender</p>
+            </div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link " href="#!">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#!admin">Business Dashboard - Part of Day</a>
+                    </li>
+                </ul>
+
+                <form class="form-inline my-2 my-lg-0 align-bottom align-text-bottom">
+                    <a class="navbar-brand">Cities</a>
+
+                    <select ng-model="selectedCity"
+                      ng-change="onCityChange(selectedCity)"
+                      ng-options="(x.city +' ('+x.total_businesses + ')') for x in cities">
+                    </select>
+
+                    <a class="navbar-brand">Active User</a>
+                    <span class="nav-link">{{itemSelected.name}}</span>
+
+                    <select ng-model="itemSelected"
+                        ng-change="onUserChange(itemSelected)"
+                        ng-options="x.name for x in users"></select>
+
+                </form>
+            </div>
+        </nav>
+    </div>
+    <div id="main">
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div id="main-content" ng-view></div>
+    </div>
+
+    <footer class="text-center">
+        <p></p>
+    </footer>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-4568727-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+
+</html>

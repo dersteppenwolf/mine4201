@@ -1,0 +1,95 @@
+<div class="jumbotron text-center">
+
+	<div class="row mapdiv fixed-top">
+	<div class="col-md-12  ">
+		<div class="col-md-12">
+			<label for="keywork">Keyword:</label>
+			<input id="keywork" type="text" ng-model="keyword">
+			<button class="btn btn-primary my-2 my-sm-0" type="submit" ng-click="loadSearchRecs()">Search</button>
+		</div>
+		<div id="map" class="col-md-12" style="height: 300px; width:100%;"></div>
+	</div>
+		</div>
+
+	<div class="row listdiv">
+		<div class="col-md-12">
+			<div class="col-md-12 recTypeTitle " ng-show="hasText">
+				<h2>Text Based Recommendations</h2>
+			</div>
+
+			<div class="col-md-12" ng-show="hasText">
+				<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(textR);">Map</button>
+				<artist-card data-title="Search Results" data-items="textR">
+				</artist-card>
+			</div>
+		</div>
+
+		<div class="col-md-12 recTypeTitle " ng-show="hasUser">
+			<h2>Personalized Recommendations</h2>
+		</div>
+
+		<div class="col-md-12 recTypeSubTitle " ng-show="hasUser">
+			<h2>Factorization</h2>
+		</div>
+
+		<div class="col-md-6" ng-show="hasUser">
+			<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(svdR);">Map</button>
+			<artist-card data-title="You May Like (SVD)" data-items="svdR">
+			</artist-card>
+		</div>
+
+		<div class="col-md-6" ng-show="hasUser">
+			<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(svdDistanceR);">Map</button>
+
+			<artist-card data-title="SVD with Location Context" data-items="svdDistanceR">
+			</artist-card>
+		</div>
+
+		<div class="col-md-12 recTypeSubTitle " ng-show="hasUser">
+			<h2>Content with Factorization Machines</h2>
+		</div>
+
+		<div class="col-md-6" ng-show="hasUser">
+			<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(contentR);">Map</button>
+			<artist-card data-title="You May Like (FM)" data-items="contentR">
+			</artist-card>
+		</div>
+
+		<div class="col-md-6" ng-show="hasUser">
+			<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(contentDistanceR);">Map</button>
+			<artist-card data-title="FM with Location Context" data-items="contentDistanceR">
+			</artist-card>
+		</div>
+
+
+		<div class="col-md-12 recTypeTitle " ng-show="isPopular">
+			<h2>Non Personalized Recommendations</h2>
+		</div>
+
+		<div class="col-md-4" ng-show="isPopular">
+
+			<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(popularByStars);">Map</button>
+
+			<artist-card data-title="Best Rated" data-items="popularByStars">
+			</artist-card>
+		</div>
+
+		<div class="col-md-4" ng-show="isPopular">
+
+			<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(popularCheckin);">Map</button>
+
+			<artist-card data-title="Popular By Checkins" data-items="popularCheckin">
+			</artist-card>
+		</div>
+
+		<div class="col-md-4" ng-show="isPopular">
+			<button class="btn btn-primary btn-sm" type="submit" ng-click="addRecMarkers(popularReview);">Map</button>
+
+			<artist-card data-title="Popular By # of Reviews" data-items="popularReview">
+			</artist-card>
+		</div>
+
+	</div>
+
+
+</div>

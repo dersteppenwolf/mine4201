@@ -1,0 +1,53 @@
+<div class="placeCard">
+    <div class="card  text-black  mb-2 ">
+        <h4>{{ctrl.title}}</h4>
+        <span ng-if="ctrl.items.length == 0">No items available.</span>
+    </div>
+    <!--Card-->
+    <div class="card  text-black  mb-1" ng-repeat="(key,value) in ctrl.items">
+        <div class="card-block">
+            <!--Text-->
+            <p class="card-text"><small >{{value.movie_data.title}} - {{value.movie_data.runtime_minutes}} min.</small></p>
+            <p class="card-text"><small class="text-muted" >Rank: {{value.ranking}} - Score: {{value.score}}</small></p>
+            <p class="card-text"><img ng-src="{{value.movie_data.tmdb_poster_path}}" /></p>
+            <p class="card-text"><small class="text-muted" >{{value.movie_data.tmdb_overview}} </small></p>
+			<p class="card-text"><small >Genres:</small></p>
+				<div class="card  text-black  mb-1" ng-repeat="(a,b) in value.movie_data.genres">
+					<p class="card-text"><small class="text-muted" >{{b.genre}} </small></p>
+				</div>
+			<p class="card-text"><small >Directors:</small></p>
+				<div class="card  text-black  mb-1" ng-repeat="(a,b) in value.movie_data.directors">
+					<p class="card-text"><small class="text-muted" >{{b.primary_name}} ({{b.birth_year}} - {{b.death_year}})</small></p>
+				</div>
+			<p class="card-text"><small >Principals:</small></p>
+				<div class="card  text-black  mb-1" ng-repeat="(a,b) in value.movie_data.principals">
+					<p class="card-text"><small class="text-muted" >{{b.primary_name}} ({{b.birth_year}} - {{b.death_year}})</small></p>
+				</div>
+
+      <button class="btn btn-small" ng-click="explain(ctrl.user, value.movie_data.imdb_tconst)">Why?</button>
+
+        </div>
+    </div>
+    <!--/.Card-->
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Explanation</h4>
+      </div>
+      <div class="modal-body">
+        <p>You may like this movie because: {{explain}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

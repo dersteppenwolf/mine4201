@@ -1,0 +1,53 @@
+
+server:
+  port: 8080
+  contextPath: /taller01
+
+spring:
+  profiles: local, default
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    format_sql: false
+    maxPoolSize: 10
+    defaultSchema: public
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      show_sql: false
+      format_sql: false
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/mine
+    username: aplicacion
+    password: aplicacion
+    driverClassName: org.postgresql.Driver
+
+         
+
+
+
+
+---
+spring:
+  profiles: prod
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    format_sql: false
+    maxPoolSize: 10
+    defaultSchema: public
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      show_sql: false
+      format_sql: false
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:6432/mine
+    username: mine
+    password: mine
+    driverClassName: org.postgresql.Driver
+ 
+server:
+  port: 7777

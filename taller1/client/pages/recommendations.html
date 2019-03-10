@@ -1,0 +1,85 @@
+<div class="jumbotron text-center">
+	<h1>Recommend items by finding similar users</h1>
+
+
+
+	<div class="container">
+	      <!-- Example row of columns -->
+	      <div class="row">
+	        <div class="col-md-12">
+
+
+						<div >
+							<div >
+								<form>
+									<b>Algorithm:</b>
+									<input type="radio" ng-model="similitud" value="J"> Jaccard </input>
+									<input type="radio" ng-model="similitud" value="C"> Cosine </input>
+									<input type="radio" ng-model="similitud" value="P"> Pearson </input>
+								</form>
+							</div>
+
+								<div >
+								<form>
+								<b>Size of neighborhood: </b>
+								<select ng-model="vecindario">
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="15">15</option>
+									<option value="20">20</option>
+									<option value="25">25</option>
+									<option value="30">30</option>
+								</select>
+								</form>
+							</div>
+
+								<div >
+								<form>
+								<b> Number of Recomendations: </b>
+								<select ng-model="nrecomendaciones">
+									<option value="5">5</option>
+									<option value="10">10</option>
+									<option value="15">15</option>
+									<option value="20">20</option>
+									<option value="20">25</option>
+								</select>
+								</form>
+							</div>
+
+							<div>
+								<button class="btn btn-primary my-2 my-sm-0"
+								type="submit" ng-click="search()" >Go</button>
+							</div>
+
+						</div >
+	        </div>
+
+
+	        <div class="col-md-6">
+						<artist-card
+									 data-title="Recommendations"
+									 data-items="artists">
+						</artist-card>
+				 </div>
+				 <div class="col-md-6">
+					 <div class="card" ng-if="artists.length > 0" >
+						  <div class="card-block">
+						    <h4 class="card-title">Results</h4>
+						    <p class="card-text">Execution time: {{result.executionTime}} </p>
+								<p class="card-text">Number of User Ratings:  {{result.numberOfUserRatings}} </p>
+
+
+								<canvas id="radar" class="chart chart-radar"
+								  chart-data="data" chart-options="options" chart-labels="labels">
+								</canvas>
+
+						  </div>
+						</div>
+				</div>
+
+				</div>
+		</div>
+
+
+
+</div>

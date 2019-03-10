@@ -1,0 +1,44 @@
+<div class="jumbotron text-center">
+
+	<div class="row listdiv">
+
+		<div class="col-md-12 recTypeTitle " >
+			<h2>Matrix Factorization Based Recommendations</h2>
+		</div>
+
+		<div class="col-md-4" >
+			<artist-card data-title="Based in Users like you (Collaborative SVD)" data-items="svdR" data-user="{{itemSelected}}">
+			</artist-card>
+		</div>
+
+		<div class="col-md-4" >
+			<artist-card data-title="Ranked Recommendations (Mixed)  " data-items="mixedR" data-user="{{itemSelected}}">
+			</artist-card>
+		</div>
+
+		<div class="col-md-4" >
+			<artist-card data-title="Based in Movies you like (Factorization Machine)" data-items="contentR" data-user="{{itemSelected}}">
+			</artist-card>
+		</div>
+
+		<div class="col-md-12 recTypeTitle " >
+			<h2>Graph Based Recommendations</h2>
+		</div>
+
+		<div class="col-md-4" >
+			<artist-card data-title="Personalized Page Rank Recommendations" data-items="pageRankR" data-user="{{itemSelected}}">
+			</artist-card>
+		</div>
+
+		<div class="col-md-4" >
+			<artist-card data-title="Based in Directors you like (Ontology)" data-items="directorR" data-user="{{itemSelected}}">
+			</artist-card>
+		</div>
+
+		<div class="col-md-4" >
+			<artist-card data-title="Based in Actors you like  (Ontology)" data-items="actorR" data-user="{{itemSelected}}">
+			</artist-card>
+		</div>
+
+	</div>
+</div>

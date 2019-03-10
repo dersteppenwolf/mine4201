@@ -1,0 +1,70 @@
+<div class="jumbotron text-center">
+
+	<div class="row">
+		<div class="col-md-6">
+
+			<div class="card " style="width: 20rem;">
+				<center>
+					<img class="card-img-top" src="images/user.png" style="width: 5rem;">
+				</center>
+				<div class="card-block">
+					<h4 class="card-title">User Profile</h4>
+					<p class="card-text">Name: {{selectedUser.name}} </p>
+					<p class="card-text">LastFM User: {{selectedUser.lastfmUser}} </p>
+					<p class="card-text">Age: {{selectedUser.age}} </p>
+					<p class="card-text">ID: {{selectedUser.id}} </p>
+					<p class="card-text">Number of Preferences: {{numPrefs}} </p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+
+			<div class="card  text-white bg-dark mb-3" style="width: 30rem;">
+				<h3>Similar Users</h3>
+				<form>
+					<b>Algorithm:</b>
+					<input type="radio" ng-model="similitud" value="J"> Jaccard </input>
+					<input type="radio" ng-model="similitud" value="C"> Cosine </input>
+					<input type="radio" ng-model="similitud" value="P"> Pearson </input>
+				</form>
+				<ul class="">
+					<li class="" ng-repeat="s in similarUsers">
+						{{s.name}}
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="col-md-6">
+			<artist-card data-title="User Preferences" data-items="preferences">
+			</artist-card>
+		</div>
+
+
+		<div class="col-md-6">
+			<div class="card  text-white bg-dark mb-3" style="width: 30rem;">
+				<h3>Similar to your favorite artists</h3>
+				<span ng-if="top5preferences.length == 0">No items available.</span>
+			</div>
+
+			<div ng-repeat="top in top5preferences">
+				<div class="card  text-white bg-dark mb-3" style="width: 30rem;">
+					<div class="card-block">
+						<h4 class="card-title">Similar to {{top.artist.name}}</h4>
+						<artist-card data-title="" data-items="top.similar">
+						</artist-card>
+					</div>
+				</div>
+				<br/>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+</div>

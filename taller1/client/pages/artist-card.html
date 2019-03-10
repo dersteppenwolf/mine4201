@@ -1,0 +1,40 @@
+<div class="">
+  <div class="card  text-white bg-dark mb-3" style="width: 30rem;">
+  <h3>{{ctrl.title}}</h3>
+  <span ng-if="ctrl.items.length == 0">No items available.</span>
+  </div>
+
+  <!--Card-->
+  <div class="card  text-white bg-dark mb-3" style="width: 30rem;" ng-repeat="(key,value) in ctrl.items" >
+      <!--Card image-->
+      <div class="card-header">
+        {{value.name}}
+      </div>
+
+      <div class="view overlay hm-white-slight">
+         <img ng-src="{{value.photoUrl}}" class="img-fluid" alt="">
+         <a>
+             <div class="mask"></div>
+         </a>
+     </div>
+      <!--Card content-->
+      <div class="card-body">
+
+          <!--Text-->
+          <p class="card-text text-justify small" ng-bind-html="value.wiki  | unsafe"></p>
+          <p class="card-text"><small class="text-muted">Total Plays: {{value.totalPlays}} .:.  Total Users: {{value.totalUsers}}</small></p>
+          <p class="card-text"><small class="text-muted">
+          <a ng-href="https://musicbrainz.org/artist/{{value.gid}}" target="_blank">View in MusicBrainz</a>  </small></p>
+          <div>
+            <input-stars  max="5"
+              ng-model="value.rating"
+              ng-click="setUserPreference(value)" ></input-stars>
+          </div>
+
+
+      </div>
+
+  </div>
+  <!--/.Card-->
+
+</div>

@@ -1,0 +1,6 @@
+#pip install -r requirements.txt
+flask
+tornado
+flask-cors
+psycopg2
+elasticsearch
